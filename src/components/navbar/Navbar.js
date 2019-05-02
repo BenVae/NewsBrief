@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
 
-import {Nav, Navbar} from "react-bootstrap";
+import {Container, Nav, Navbar} from "react-bootstrap";
 
 class NavbarComponent extends Component {
 
     render() {
         return (
-            <Navbar collapseOnSelect expand="md" bg="dark" variant="dark">
+            <Navbar collapseOnSelect expand="md" bg="primary" variant="dark">
+                <Container>
                 <Navbar.Brand href="#home">NewsBrief</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -21,6 +22,7 @@ class NavbarComponent extends Component {
                         </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
+                </Container>
             </Navbar>
         )
     }

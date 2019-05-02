@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import './App.css';
 import Routes from './components/route/Routes'
 import Navbar from '../src/components/navbar/Navbar'
+import Footer from '../src/components/footer/Footer'
 
 
-class App extends Component {
+export default class App extends Component {
     render() {
         return (
             <div className="App">
@@ -12,9 +13,8 @@ class App extends Component {
                 <header className="App-header">
                     <Routes/>
                 </header>
+                <Footer/>
             </div>
         );
     }
 }
-
-export default App;
