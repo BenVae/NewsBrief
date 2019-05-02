@@ -22,13 +22,13 @@ class Landing extends Component {
                                         <div className="form-group"><label>Email address</label>
                                             <input type="email" className="form-control w-50 mx-auto" placeholder="Enter email" required="required">
                                             </input>
-                                            <small className="form-text text-muted">We'll definitly share your e-mail, 'cause thats how we make money.</small>
+                                            <small className="form-text text-muted">We'll definitely share your e-mail, 'cause thats how we make money.</small>
                                             </div>
                                         <div className="form-group"><label>Password</label>
                                             <input type="password" className="form-control w-50 mx-auto" placeholder="Password" required="required">
                                             </input>
                                         </div>
-                                        <button type="submit" className="btn btn-primary">Submit</button>
+                                        <button type="submit" className="btn btn-primary">reinloggen</button>
                                     </form>
                                 </div>
                             </div>
