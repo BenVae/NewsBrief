@@ -1,8 +1,35 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-
 class FetchNewsletter extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            newsletters: [
+                {
+                    "id": 1234,
+                    "title": "Test 1",
+                    "article": "BLALBALSASDLADLASFLKHJASLÖFHLKASHFÖLKJASÖKLDFHÖASDLKjASLKDJASLDKJ"
+                },
+                {
+                    "id": 4321,
+                    "title": "Test 2",
+                    "article": "BLALBALSASDLADLASFLKHJASLÖFHLKASHFÖLKJASÖKLDFHÖASDLKjASLKDJASLDKJ"
+                }
+            ]
+        };
+    }
+
+    /*componentWillMount() {
+        axios.get('addDefaultURL')
+            .then(response => {
+                this.setState({news: response.data.news})
+            })
+            .catch( error => {
+                alert("fail lol")
+            })
+    }*/
 
     render() {
         return (
@@ -14,11 +41,14 @@ class FetchNewsletter extends Component {
                                 <div className="card-body">
                                     <h5 className="card-title"><b>NewsBriefe</b></h5>
                                     <div className="list-group">
-                                        <a href="#" onClick={getNewsletter} className="list-group-item list-group-item-action active"> Neuigkeitenletter 1 </a>
-                                        <a href="#" className="list-group-item list-group-item-action">Titel 2</a>
-                                        <a href="#" className="list-group-item list-group-item-action">Titel 3</a>
-                                        <a href="#" className="list-group-item list-group-item-action">Neuigkeitenbrief 4</a>
-                                        <a href="#" className="list-group-item list-group-item-action">Newsletter 5</a>
+                                        {
+                                            //href adden onclick mit funktionsaufruf für textausgabe
+                                            this.state.newsletters.map((newsletter, index) => (
+                                                <a href="#" key={index} className="list-group-item list-group-item-action active">
+                                                    {newsletter.title}
+                                                </a>
+                                            ))
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -49,3 +79,5 @@ class FetchNewsletter extends Component {
         )
     }
 }
+
+export default FetchNewsletter;
