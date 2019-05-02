@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 
-class fetchNewsletter extends Component {
+class FetchNewsletter extends Component {
     render() {
         return (
             <div className="py-5">
@@ -54,4 +54,4 @@ class fetchNewsletter extends Component {
 }
 
 
-export default fetchNewsletter;
+export default FetchNewsletter;
