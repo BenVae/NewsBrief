@@ -11,6 +11,7 @@ class Routes extends Component {
             <BrowserRouter>
             <Route path="/" exact component={Landing} />
             <Route path="/landing" component={Landing} />
+            <Route path="/message" component={Message} />
             <Route path="/test" component={App} />
             <Route path="/fetchNewsletter" component={FetchNewsletter} />
             </BrowserRouter>
