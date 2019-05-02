@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 
 
-class FetchNewsletter extends Component {
+
+export default class FetchNewsletter extends Component {
 
     render() {
         return (
@@ -14,7 +14,7 @@ class FetchNewsletter extends Component {
                                 <div className="card-body">
                                     <h5 className="card-title"><b>NewsBriefe</b></h5>
                                     <div className="list-group">
-                                        <a href="#" onClick={getNewsletter} className="list-group-item list-group-item-action active"> Neuigkeitenletter 1 </a>
+                                        <a href="#" className="list-group-item list-group-item-action active"> Neuigkeitenletter 1 </a>
                                         <a href="#" className="list-group-item list-group-item-action">Titel 2</a>
                                         <a href="#" className="list-group-item list-group-item-action">Titel 3</a>
                                         <a href="#" className="list-group-item list-group-item-action">Neuigkeitenbrief 4</a>
