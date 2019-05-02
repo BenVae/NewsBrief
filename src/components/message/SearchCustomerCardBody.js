@@ -40,6 +40,8 @@ export default class SearchCustomerCardBody extends Component {
             </div>
         )
     }
+
+
 }
 
 

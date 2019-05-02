@@ -8,18 +8,14 @@ class NavbarComponent extends Component {
         return (
             <Navbar collapseOnSelect expand="md" bg="primary" variant="dark">
                 <Container>
-                <Navbar.Brand href="#home">NewsBrief</Navbar.Brand>
+                <Navbar.Brand href="/">NewsBrief</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                        <Nav.Link href="/message">Message</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="/fetchNewsletter">More deets</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                        </Nav.Link>
+                        <Nav.Link href="/fetchNewsletter">Newsbriefe</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 </Container>
