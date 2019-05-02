@@ -4,6 +4,7 @@ import Message from '../../components/message/Message'
 import { BrowserRouter, Route } from 'react-router-dom';
 import FetchNewsletter from "../newsletter/FetchNewsletter";
 import Landing from "../index/Landing";
+import CreateNewsletter from "../newsletter/CreateNewsletter";
 
 class Routes extends Component {
     render() {
@@ -14,6 +15,7 @@ class Routes extends Component {
             <Route path="/message" component={Message} />
             <Route path="/test" component={App} />
             <Route path="/fetchNewsletter" component={FetchNewsletter} />
+            <Route path="/createNewsletter" component={CreateNewsletter}/>
             </BrowserRouter>
         )
     }

@@ -17,6 +17,9 @@ class NavbarComponent extends Component {
                     <Nav>
                         <Nav.Link href="/fetchNewsletter">Newsbriefe</Nav.Link>
                     </Nav>
+                    <Nav>
+                        <Nav.Link href="/createNewsletter">bitchin</Nav.Link>
+                    </Nav>
                 </Navbar.Collapse>
                 </Container>
             </Navbar>
