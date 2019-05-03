@@ -6,27 +6,19 @@ export const fetchNewsletterData = function() {
 
         return newsletterTestdata;
 
-        /*fetch(jsonData)
-            .then(response => {
-                this.setState({
-                    newsletters: response.data,
-                    title: response.data[0].title, content: response.data[0].content
-                })
-            })
-            .catch(error => {
-                alert("fail lol")
-            })*/
     } else {
 
         axios.get('addDefaultURL')
             .then(response => {
                 this.setState({
                     newsletters: response.data,
-                    title: response.data.title, content: response.data.content
+                    title: response.data[0].title,
+                    content: response.data[0].content,
+                    itemCurrentlyActive: response.data[0].newsletterId
                 })
             })
             .catch(error => {
-                alert("fail lol")
+                alert(error.toString());
             })
     }
 }
