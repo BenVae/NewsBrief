@@ -1,35 +1,36 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import NewsletterContentCard from "./NewsletterContentCard";
 
 class FetchNewsletter extends Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
-            newsletters: [
-                {
-                    "id": 1234,
-                    "title": "Test 1",
-                    "article": "BLALBALSASDLADLASFLKHJASLÖFHLKASHFÖLKJASÖKLDFHÖASDLKjASLKDJASLDKJ"
-                },
-                {
-                    "id": 4321,
-                    "title": "Test 2",
-                    "article": "BLALBALSASDLADLASFLKHJASLÖFHLKASHFÖLKJASÖKLDFHÖASDLKjASLKDJASLDKJ"
-                }
-            ]
+            newsletters: [],
+            title: "",
+            content: ""
         };
     }
 
-    /*componentWillMount() {
+    componentWillMount() {
         axios.get('addDefaultURL')
             .then(response => {
-                this.setState({news: response.data.news})
+                this.setState({newsletters: response.data,
+                    title: response.data.title, content: response.data.content})
             })
             .catch( error => {
                 alert("fail lol")
             })
-    }*/
+    }
+
+    updateContentNewsletter = (newsletter) => {
+         this.setState({
+             title: newsletter.title,
+             content: newsletter.content
+         })
+    }
 
     render() {
         return (
@@ -42,9 +43,8 @@ class FetchNewsletter extends Component {
                                     <h5 className="card-title"><b>NewsBriefe</b></h5>
                                     <div className="list-group">
                                         {
-                                            //href adden onclick mit funktionsaufruf für textausgabe
                                             this.state.newsletters.map((newsletter, index) => (
-                                                <a href="#" key={index} className="list-group-item list-group-item-action active">
+                                                <a href="#" key={index} onClick={() => this.updateContentNewsletter(newsletter)} className="list-group-item list-group-item-action active">
                                                     {newsletter.title}
                                                 </a>
                                             ))
@@ -54,24 +54,7 @@ class FetchNewsletter extends Component {
                             </div>
                         </div>
                         <div className="col-md-8">
-                            <div className="card">
-                                <div className="card-body">
-                                    <h5 className="card-title"><b>Cras justo odio</b></h5>
-                                    <p className="card-text">Hier steht Text.&nbsp;Hier steht Text.Hier steht Text.Hier
-                                        steht Text.Hier steht Text.Hier steht Text.Hier steht Text. Hier steht Text.Hier
-                                        steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier
-                                        steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier
-                                        steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier
-                                        steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier
-                                        steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier
-                                        steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier
-                                        steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier
-                                        steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier
-                                        steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier
-                                        steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier steht Text.Hier
-                                        steht Text. </p>
-                                </div>
-                            </div>
+                            <NewsletterContentCard title={this.state.title} content={this.state.content}/>
                         </div>
                     </div>
                 </div>
