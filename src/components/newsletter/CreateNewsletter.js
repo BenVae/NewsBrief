@@ -44,7 +44,7 @@ export default class CreateNewsletter extends Component {
                         <div className="col-md-12 mb-3">
                             <div className="card">
                                 <div className="card-body">
-                                    <h1 className="card-title" contentEditable="true">Newsbrief anlayen</h1>
+                                    <h1 className="card-title">Newsbrief anlayen</h1>
                                     <div className="row">
                                         <div className="col-md-12">
                                             <input name={"title"} value={this.state.title} placeholder="Titel eingeben"
