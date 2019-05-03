@@ -15,13 +15,13 @@ class FetchNewsletter extends Component {
     }
 
     componentWillMount() {
-        axios.get('addDefaultURL')
+        axios.get('http://localhost:8080/rest/v1/newsletter/')
             .then(response => {
                 this.setState({newsletters: response.data,
-                    title: response.data.title, content: response.data.content})
+                    title: response.data[0].title, content: response.data[0].content})
             })
             .catch( error => {
-                alert("fail lol")
+                alert(error.toString())
             })
     }
 

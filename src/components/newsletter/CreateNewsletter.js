@@ -21,7 +21,7 @@ export default class CreateNewsletter extends Component {
 
      postNewsletter = () => {
 
-        axios.post('playurl', this.state)
+        axios.post('http://localhost:8080/rest/v1/newsletter/', this.state)
             .then(response => {
                 alert("POST of Newsletter SUCCESSFULL");
                 this.resetState();
