@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import NewsletterContentCard from "./NewsletterContentCard";
+import {fetchNewsletterData} from "../../helper/FetchData";
+
 
 class FetchNewsletter extends Component {
 
@@ -10,27 +11,37 @@ class FetchNewsletter extends Component {
         this.state = {
             newsletters: [],
             title: "",
-            content: ""
+            content: "",
+            itemCurrentlyActive: ""
         };
     }
 
     componentWillMount() {
-        axios.get('addDefaultURL')
-            .then(response => {
-                this.setState({newsletters: response.data,
-                    title: response.data.title, content: response.data.content})
-            })
-            .catch( error => {
-                alert("fail lol")
-            })
+        let testdata = fetchNewsletterData();
+
+        this.setState({
+            newsletters: testdata,
+            title: testdata[0].title,
+            content: testdata[0].content,
+            itemCurrentlyActive: testdata[0].id
+        })
     }
 
     updateContentNewsletter = (newsletter) => {
-         this.setState({
-             title: newsletter.title,
-             content: newsletter.content
-         })
-    }
+
+        let removeClassFromElement = document.getElementById(this.state.itemCurrentlyActive);
+        removeClassFromElement.classList.remove('active');
+
+        this.setState({
+            title: newsletter.title,
+            content: newsletter.content,
+            itemCurrentlyActive: newsletter.id
+        });
+
+        let addClassToElement = document.getElementById(newsletter.id);
+        addClassToElement.classList.add('active');
+
+    };
 
     render() {
         return (
@@ -44,9 +55,11 @@ class FetchNewsletter extends Component {
                                     <div className="list-group">
                                         {
                                             this.state.newsletters.map((newsletter, index) => (
-                                                <a href="#" key={index} onClick={() => this.updateContentNewsletter(newsletter)} className="list-group-item list-group-item-action active">
+                                                <span key={index} id={newsletter.id}
+                                                      onClick={() => this.updateContentNewsletter(newsletter)}
+                                                      className="list-group-item list-group-item-action clickable-anchor-tags">
                                                     {newsletter.title}
-                                                </a>
+                                                </span>
                                             ))
                                         }
                                     </div>

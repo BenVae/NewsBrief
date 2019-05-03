@@ -282,6 +282,9 @@ textarea.form-control {
   margin-right: 0.3125rem;
   margin-left: 0; }
 
+.clickable-anchor-tags{
+  cursor: pointer;
+}
 
 
 
