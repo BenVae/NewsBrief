@@ -1,24 +1,19 @@
 import newsletterTestdata from "./developmentdata/newsletterTestdata.json";
-import {AxiosInstance as axios} from "axios";
+import axios from "axios";
 
-export const fetchNewsletterData = function() {
+
+export const fetchNewsletterData = function () {
     if (process.env.NODE_ENV !== 'production') {
-
+        console.log(process.env.NODE_ENV);
+        alert("i am in development");
+        console.log(newsletterTestdata);
         return newsletterTestdata;
-
     } else {
-
-        axios.get('addDefaultURL')
-            .then(response => {
-                this.setState({
-                    newsletters: response.data,
-                    title: response.data[0].title,
-                    content: response.data[0].content,
-                    itemCurrentlyActive: response.data[0].newsletterId
-                })
-            })
+        alert("i am in production");
+        return axios.get('http://localhost:8080/rest/v1/newsletter/')
+            .then(response => response.data)
             .catch(error => {
                 alert(error.toString());
             })
     }
-}
+};
