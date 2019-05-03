@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import NewsletterContentCard from "./NewsletterContentCard";
+import {fetchNewsletterData} from "../../helper/FetchData";
+
 
 class FetchNewsletter extends Component {
 
@@ -10,28 +11,36 @@ class FetchNewsletter extends Component {
         this.state = {
             newsletters: [],
             title: "",
-            content: ""
+            content: "",
+            itemCurrentlyActive: ""
         };
     }
 
     componentWillMount() {
-        axios.get('http://localhost:8080/rest/v1/newsletter/')
-            .then(response => {
-                this.setState({
-                    newsletters: response.data,
-                    title: response.data[0].title,
-                    content: response.data[0].content})
-            })
-            .catch( error => {
-                alert(error.toString())
-            })
+        let testdata = fetchNewsletterData();
+
+        this.setState({
+            newsletters: testdata,
+            title: testdata[0].title,
+            content: testdata[0].content,
+            itemCurrentlyActive: testdata[0].id
+        })
     }
 
-    updateNewsletterContentCard = (newsletter) => {
-         this.setState({
-             title: newsletter.title,
-             content: newsletter.content
-         })
+    updateContentNewsletter = (newsletter) => {
+
+        let removeClassFromElement = document.getElementById(this.state.itemCurrentlyActive);
+        removeClassFromElement.classList.remove('active');
+
+        this.setState({
+            title: newsletter.title,
+            content: newsletter.content,
+            itemCurrentlyActive: newsletter.id
+        });
+
+        let addClassToElement = document.getElementById(newsletter.id);
+        addClassToElement.classList.add('active');
+
     };
 
     render() {
@@ -42,16 +51,15 @@ class FetchNewsletter extends Component {
                         <div className="col-md-4">
                             <div className="card">
                                 <div className="card-body">
-                                    <h5 className="card-title">
-                                        <b>NewsBriefe</b>
-                                    </h5>
+                                    <h5 className="card-title"><b>NewsBriefe</b></h5>
                                     <div className="list-group">
                                         {
                                             this.state.newsletters.map((newsletter, index) => (
-                                                <a href="#" key={index} onClick={() => this.updateNewsletterContentCard(newsletter)}
-                                                   className="list-group-item list-group-item-action active">
+                                                <span key={index} id={newsletter.id}
+                                                      onClick={() => this.updateContentNewsletter(newsletter)}
+                                                      className="list-group-item list-group-item-action clickable-anchor-tags">
                                                     {newsletter.title}
-                                                </a>
+                                                </span>
                                             ))
                                         }
                                     </div>
@@ -59,9 +67,7 @@ class FetchNewsletter extends Component {
                             </div>
                         </div>
                         <div className="col-md-8">
-                            <NewsletterContentCard
-                                title={this.state.title}
-                                content={this.state.content}/>
+                            <NewsletterContentCard title={this.state.title} content={this.state.content}/>
                         </div>
                     </div>
                 </div>
