@@ -17,20 +17,22 @@ class FetchNewsletter extends Component {
     componentWillMount() {
         axios.get('http://localhost:8080/rest/v1/newsletter/')
             .then(response => {
-                this.setState({newsletters: response.data,
-                    title: response.data[0].title, content: response.data[0].content})
+                this.setState({
+                    newsletters: response.data,
+                    title: response.data[0].title,
+                    content: response.data[0].content})
             })
             .catch( error => {
                 alert(error.toString())
             })
     }
 
-    updateContentNewsletter = (newsletter) => {
+    updateNewsletterContentCard = (newsletter) => {
          this.setState({
              title: newsletter.title,
              content: newsletter.content
          })
-    }
+    };
 
     render() {
         return (
@@ -40,11 +42,14 @@ class FetchNewsletter extends Component {
                         <div className="col-md-4">
                             <div className="card">
                                 <div className="card-body">
-                                    <h5 className="card-title"><b>NewsBriefe</b></h5>
+                                    <h5 className="card-title">
+                                        <b>NewsBriefe</b>
+                                    </h5>
                                     <div className="list-group">
                                         {
                                             this.state.newsletters.map((newsletter, index) => (
-                                                <a href="#" key={index} onClick={() => this.updateContentNewsletter(newsletter)} className="list-group-item list-group-item-action active">
+                                                <a href="#" key={index} onClick={() => this.updateNewsletterContentCard(newsletter)}
+                                                   className="list-group-item list-group-item-action active">
                                                     {newsletter.title}
                                                 </a>
                                             ))
@@ -54,7 +59,9 @@ class FetchNewsletter extends Component {
                             </div>
                         </div>
                         <div className="col-md-8">
-                            <NewsletterContentCard title={this.state.title} content={this.state.content}/>
+                            <NewsletterContentCard
+                                title={this.state.title}
+                                content={this.state.content}/>
                         </div>
                     </div>
                 </div>
