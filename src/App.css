@@ -286,5 +286,10 @@ textarea.form-control {
   cursor: pointer;
 }
 
+.td-list-item:first-child:last-child{
+  border: 0px;
+  border-top-left-radius: 0rem;
+  border-top-right-radius: 0rem;
+}
 
 

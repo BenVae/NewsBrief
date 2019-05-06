@@ -1,7 +1,25 @@
 import React, {Component} from 'react';
+import {fetchCustomerdata} from "../../helper/FetchData";
 
 
 export default class SearchCustomerCardBody extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            customers: []
+        };
+    }
+
+    componentWillMount() {
+        let testdata = fetchCustomerdata();
+
+        this.setState({
+            customers: testdata
+        })
+    }
+
     render() {
         return (
             <div className="card-body border-bottom">
@@ -25,15 +43,16 @@ export default class SearchCustomerCardBody extends Component {
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>4234234, Dieter</td>
-                        </tr>
-                        <tr>
-                            <td>2342345, Peter</td>
-                        </tr>
-                        <tr>
-                            <td>2131236, Jgurtz</td>
-                        </tr>
+                        {
+                            this.state.customers.map((customer, index) => (
+                                <tr>
+                                    <td key={index} id={customer.customerId}
+                                        className="list-group-item list-group-item-action td-list-item clickable-anchor-tags">
+                                        {customer.customerId} {customer.surname} {customer.name}
+                                    </td>
+                                </tr>
+                            ))
+                        }
                         </tbody>
                     </table>
                 </div>
