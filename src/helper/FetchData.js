@@ -1,10 +1,9 @@
 import newsletterTestdata from "./developmentdata/newsletterTestdata.json";
 import customerTestdata from "./developmentdata/customerTestdata";
-import {AxiosInstance as axios} from "axios";
+import axios from "axios";
 
 export const fetchNewsletterData = function() {
     if (process.env.NODE_ENV !== 'production') {
-
         return newsletterTestdata;
 
     } else {
@@ -15,6 +14,7 @@ export const fetchNewsletterData = function() {
             })
     }
 };
+
 export const fetchCustomerdata = function() {
     if (process.env.NODE_ENV !== 'production') {
 
