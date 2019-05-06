@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import NewsletterContentCard from "./NewsletterContentCard";
 import {fetchNewsletterData} from "../../helper/FetchData";
-import axios from "axios";
+
 
 
 class FetchNewsletter extends Component {
+    async getData() {
+        return await fetchNewsletterData();
+    }
 
     constructor(props) {
         super(props);
@@ -18,8 +21,7 @@ class FetchNewsletter extends Component {
     }
 
     componentWillMount() {
-        fetchNewsletterData()
-            .then(newsletterData => {
+        this.getData().then(newsletterData => {
                 this.setState({
                     newsletters: newsletterData,
                     title: newsletterData[0].title,
