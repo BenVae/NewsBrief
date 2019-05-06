@@ -49,7 +49,7 @@ export default class SearchCustomerCard extends Component {
                                     <tr key={index}>
                                         <td id={customer.customerId}
                                             className="list-group-item list-group-item-action td-list-item clickable-anchor-tags">
-                                            {customer.customerId} {customer.surname} {customer.name}
+                                            {customer.customerId}, {customer.surname} {customer.name}
                                         </td>
                                     </tr>
                                 ))

@@ -10,7 +10,6 @@ export default class CreateNewsletter extends Component {
     }
 
     handleChange = event => {
-
         this.setState({[event.target.name]: event.target.value}, () => console.log(this.state.content));
     }
 
@@ -67,28 +66,6 @@ export default class CreateNewsletter extends Component {
                                         </div>
                                         <div className="col-md-6">
                                             <a className="btn btn-danger w-100" onClick={this.resetState}>doch nicht</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="card">
-                                        <div className="card-header"> aktuellster neuigkeitenletter!</div>
-                                        <div className="card-body">
-                                            <p>wie heißt der bürgermeister von wesel</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-6">
-                                    <div className="card">
-                                        <div className="card-header"> 2.neuster neusbrief</div>
-                                        <div className="card-body">
-                                            <p>esel</p>
                                         </div>
                                     </div>
                                 </div>
