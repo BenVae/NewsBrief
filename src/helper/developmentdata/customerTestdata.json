@@ -1,0 +1,17 @@
+[
+  {
+    "customerId": 9999,
+    "surname": "Dieter",
+    "name" : "Müller"
+  },
+  {
+    "customerId": 9998,
+    "surname": "Benjamin",
+    "name": "Vaethjunker"
+  },
+  {
+    "customerId": 9997,
+    "surname": "Philippe",
+    "name": "Renner"
+  }
+]
