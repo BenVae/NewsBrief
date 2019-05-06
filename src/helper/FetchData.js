@@ -8,22 +8,13 @@ export const fetchNewsletterData = function() {
         return newsletterTestdata;
 
     } else {
-
-        axios.get('addDefaultURL')
-            .then(response => {
-                this.setState({
-                    newsletters: response.data,
-                    title: response.data[0].title,
-                    content: response.data[0].content,
-                    itemCurrentlyActive: response.data[0].newsletterId
-                })
-            })
+        return axios.get('http://localhost:8080/rest/v1/newsletter/')
+            .then(response => response.data)
             .catch(error => {
                 alert(error.toString());
             })
     }
 };
-
 export const fetchCustomerdata = function() {
     if (process.env.NODE_ENV !== 'production') {
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import NewsletterContentCard from "./NewsletterContentCard";
 import {fetchNewsletterData} from "../../helper/FetchData";
+import axios from "axios";
 
 
 class FetchNewsletter extends Component {
@@ -17,28 +18,28 @@ class FetchNewsletter extends Component {
     }
 
     componentWillMount() {
-        let testdata = fetchNewsletterData();
-
-        this.setState({
-            newsletters: testdata,
-            title: testdata[0].title,
-            content: testdata[0].content,
-            itemCurrentlyActive: testdata[0].id
-        })
+        fetchNewsletterData()
+            .then(newsletterData => {
+                this.setState({
+                    newsletters: newsletterData,
+                    title: newsletterData[0].title,
+                    content: newsletterData[0].content,
+                    itemCurrentlyActive: newsletterData[0].newsletterId
+                })
+            })
     }
 
     updateContentNewsletter = (newsletter) => {
-
         let removeClassFromElement = document.getElementById(this.state.itemCurrentlyActive);
         removeClassFromElement.classList.remove('active');
 
         this.setState({
             title: newsletter.title,
             content: newsletter.content,
-            itemCurrentlyActive: newsletter.id
+            itemCurrentlyActive: newsletter.newsletterId
         });
 
-        let addClassToElement = document.getElementById(newsletter.id);
+        let addClassToElement = document.getElementById(newsletter.newsletterId);
         addClassToElement.classList.add('active');
 
     };
@@ -55,7 +56,7 @@ class FetchNewsletter extends Component {
                                     <div className="list-group">
                                         {
                                             this.state.newsletters.map((newsletter, index) => (
-                                                <span key={index} id={newsletter.id}
+                                                <span key={index} id={newsletter.newsletterId}
                                                       onClick={() => this.updateContentNewsletter(newsletter)}
                                                       className="list-group-item list-group-item-action clickable-anchor-tags">
                                                     {newsletter.title}

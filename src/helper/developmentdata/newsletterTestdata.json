@@ -1,11 +1,11 @@
 [
   {
-    "id": 1234,
+    "newsletterId": 1234,
     "title": "test 1",
     "content" : "blaksdfladsdölknasdfikblubberfassel"
   },
   {
-    "id": 4321,
+    "newsletterId": 4321,
     "title": "test 4312",
     "content": "hatschipuh"
   },
