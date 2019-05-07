@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import {fetchNewsletterData} from "../../helper/FetchData";
 
 export default class CreateNewsletter extends Component {
 
@@ -15,7 +16,7 @@ export default class CreateNewsletter extends Component {
     }
 
     resetState = () => {
-        this.setState({title: '', content: ''});
+        this.setState({newTitle: '', newContent: ''});
     }
 
 
@@ -33,7 +34,20 @@ export default class CreateNewsletter extends Component {
                     type: 'error',
                     confirmButtonText: 'hmm ok'
                 });
+                this.resetState();
             });
+    }
+
+    componentWillMount() {
+        fetchNewsletterData()
+            .then(newsletterData => {
+                this.setState({
+                    newsletters: newsletterData,
+                    title: newsletterData[0].title,
+                    content: newsletterData[0].content,
+                    itemCurrentlyActive: newsletterData[0].newsletterId
+                })
+            })
     }
 
     render() {
@@ -47,14 +61,14 @@ export default class CreateNewsletter extends Component {
                                     <h1 className="card-title">Newsbrief anlayen</h1>
                                     <div className="row">
                                         <div className="col-md-12">
-                                            <input name={"title"} value={this.state.title} placeholder="Titel eingeben"
+                                            <input name={"newTitle"} value={this.state.newTitle} placeholder="Titel eingeben"
                                                    className="form-control py-2 px-2 my-2"
                                                    onChange={(event) => this.handleChange(event)}/>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-md-12">
-                                            <textarea name={"content"} value={this.state.content} rows="8"
+                                            <textarea name={"newContent"} value={this.state.newContent} rows="8"
                                                       placeholder="News eingeben"
                                                       className="form-control w-100 px-2 my-2"
                                                       onChange={(event) => this.handleChange(event)}/>
