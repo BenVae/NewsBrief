@@ -5,9 +5,13 @@ import {fetchNewsletterData} from "../../helper/FetchData";
 
 export default class CreateNewsletter extends Component {
 
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = {};
+    }
+
+    async getData() {
+        return await fetchNewsletterData();
     }
 
     handleChange = event => {
@@ -19,7 +23,7 @@ export default class CreateNewsletter extends Component {
     }
 
 
-     postNewsletter = () => {
+    postNewsletter = () => {
 
         axios.post('http://localhost:8080/rest/v1/newsletter/', this.state)
             .then(response => {
@@ -37,18 +41,6 @@ export default class CreateNewsletter extends Component {
             });
     }
 
-    componentWillMount() {
-        fetchNewsletterData()
-            .then(newsletterData => {
-                this.setState({
-                    newsletters: newsletterData,
-                    title: newsletterData[0].title,
-                    content: newsletterData[0].content,
-                    itemCurrentlyActive: newsletterData[0].newsletterId
-                })
-            })
-    }
-
     render() {
         return (
             <div className="py-5">
@@ -60,7 +52,8 @@ export default class CreateNewsletter extends Component {
                                     <h1 className="card-title">Newsbrief anlayen</h1>
                                     <div className="row">
                                         <div className="col-md-12">
-                                            <input name={"newTitle"} value={this.state.newTitle} placeholder="Titel eingeben"
+                                            <input name={"newTitle"} value={this.state.newTitle}
+                                                   placeholder="Titel eingeben"
                                                    className="form-control py-2 px-2 my-2"
                                                    onChange={(event) => this.handleChange(event)}/>
                                         </div>
