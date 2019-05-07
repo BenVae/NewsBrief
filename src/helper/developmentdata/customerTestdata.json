@@ -1,0 +1,29 @@
+[
+  {
+    "name": "John",
+    "surname": "Doe",
+    "username": "Johndoe",
+    "customerId": 100001,
+    "street": "Country road 99B",
+    "city": "Newport",
+    "postcode": "X90-233"
+  },
+  {
+    "name": "Martin",
+    "surname": "Marty",
+    "username": "mightymartn",
+    "customerId": 100002,
+    "street": "Country street 10",
+    "city": "New York",
+    "postcode": "892898"
+  },
+  {
+    "name": "Diana",
+    "surname": "Duglas",
+    "username": "DD",
+    "customerId": 100003,
+    "street": "Alemannstr 5",
+    "city": "Köln",
+    "postcode": "2333"
+  }
+]
