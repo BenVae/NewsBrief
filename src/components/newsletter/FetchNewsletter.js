@@ -5,9 +5,6 @@ import {fetchNewsletterData} from "../../helper/FetchData";
 
 
 class FetchNewsletter extends Component {
-    async getData() {
-        return await fetchNewsletterData();
-    }
 
     constructor(props) {
         super(props);
@@ -16,24 +13,27 @@ class FetchNewsletter extends Component {
             newsletters: [],
             title: "",
             content: "",
-            itemCurrentlyActive: ""
+            itemCurrentlyActive: "",
         };
     }
 
     componentWillMount() {
-        this.getData().then(newsletterData => {
-                this.setState({
-                    newsletters: newsletterData,
-                    title: newsletterData[0].title,
-                    content: newsletterData[0].content,
-                    itemCurrentlyActive: newsletterData[0].newsletterId
-                })
-            })
+
+        fetchNewsletterData().then(newsletterData => {
+            this.setState({
+                newsletters: newsletterData,
+                title: newsletterData[0].title,
+                content: newsletterData[0].content,
+                itemCurrentlyActive: newsletterData[0].newsletterId
+            });
+            document.getElementById(this.state.itemCurrentlyActive).classList.add('active');
+        })
+
     }
 
     updateContentNewsletter = (newsletter) => {
-        let removeClassFromElement = document.getElementById(this.state.itemCurrentlyActive);
-        removeClassFromElement.classList.remove('active');
+
+        document.getElementById(this.state.itemCurrentlyActive).classList.remove('active');
 
         this.setState({
             title: newsletter.title,
@@ -41,8 +41,7 @@ class FetchNewsletter extends Component {
             itemCurrentlyActive: newsletter.newsletterId
         });
 
-        let addClassToElement = document.getElementById(newsletter.newsletterId);
-        addClassToElement.classList.add('active');
+        document.getElementById(newsletter.newsletterId).classList.add('active');
 
     };
 

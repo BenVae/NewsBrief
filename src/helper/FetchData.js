@@ -4,7 +4,10 @@ import axios from "axios";
 
 export const fetchNewsletterData = function() {
     if (process.env.NODE_ENV !== 'production') {
-        return newsletterTestdata;
+
+        return new Promise((result) => {
+            result(newsletterTestdata)
+        })
 
     } else {
         return axios.get('http://localhost:8080/rest/v1/newsletter/')
@@ -18,7 +21,9 @@ export const fetchNewsletterData = function() {
 export const fetchCustomerdata = function() {
     if (process.env.NODE_ENV !== 'production') {
 
-        return customerTestdata;
+        return new Promise((result) => {
+            result(customerTestdata)
+        })
 
     } else {
 

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import SearchCustomerCard from "./SearchCustomerCard";
 import CustomerDataCardBody from "./CustomerDataCardBody";
 import SendMessageCardBody from "./SendMessageCardBody";
+import {fetchCustomerdata} from "../../helper/FetchData";
 
 
 class Message extends Component {
@@ -10,11 +11,24 @@ class Message extends Component {
         super(props);
 
         this.state = {
-            messages: [],
-            title: "",
-            content: ""
+            customers: [],
+            selectedCustomer: ""
         };
     }
+
+    componentWillMount() {
+        fetchCustomerdata().then(customerData =>{
+            this.setState({
+                customers: customerData
+            })
+        });
+    }
+
+    selectCustomer= (customerId) =>{
+        this.setState({
+            selectedCustomer: customerId
+        })
+    };
 
     render() {
         return (
@@ -22,7 +36,7 @@ class Message extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4 d-flex">
-                            <SearchCustomerCard/>
+                            <SearchCustomerCard customers={this.state.customers}/>
                         </div>
                         <div className="col-md-8">
                             <div className="card">

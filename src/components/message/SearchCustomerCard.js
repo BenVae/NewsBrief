@@ -6,18 +6,6 @@ export default class SearchCustomerCard extends Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            customers: []
-        };
-    }
-
-    componentWillMount() {
-        let testdata = fetchCustomerdata();
-
-        this.setState({
-            customers: testdata
-        })
     }
 
     render() {
@@ -45,7 +33,7 @@ export default class SearchCustomerCard extends Component {
                             </thead>
                             <tbody>
                             {
-                                this.state.customers.map((customer, index) => (
+                                this.props.customers.map((customer, index) => (
                                     <tr key={index}>
                                         <td id={customer.customerId}
                                             className="list-group-item list-group-item-action td-list-item clickable-anchor-tags">
