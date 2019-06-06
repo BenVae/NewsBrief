@@ -36,7 +36,8 @@ export default class SearchCustomerCard extends Component {
                                 this.props.customers.map((customer, index) => (
                                     <tr key={index}>
                                         <td id={customer.customerId}
-                                            className="list-group-item list-group-item-action td-list-item clickable-anchor-tags">
+                                            className="list-group-item list-group-item-action td-list-item clickable-anchor-tags"
+                                        onClick={() => this.props.selectCustomer(customer.customerId)}>
                                             {customer.customerId}, {customer.surname} {customer.name}
                                         </td>
                                     </tr>
